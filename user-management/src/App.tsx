@@ -1,23 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { fetchUserList } from "./services/userService";
-import { User } from "../src/interface/User";
+import React from "react";
+import "./App.css";
+import Home from "./pages/Home"; // Importing Home which contains UserList
 
-function App() {
-  const [users, setUsers] = useState<User[]>([]);
-
-  useEffect(() => {
-    fetchUserList().then(setUsers);
-  }, []);
-
+const App: React.FC = () => {
   return (
-    <div>
-      {users.map((user) => (
-        <div key={user.id}>
-          {user.name} ({user.email})
-        </div>
-      ))}
+    <div className="App">
+      <Home /> {/* Rendering Home page which will display UserList */}
     </div>
   );
-}
+};
 
 export default App;
